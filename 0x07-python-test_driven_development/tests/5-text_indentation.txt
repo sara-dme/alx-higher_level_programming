@@ -1,0 +1,79 @@
+How to use 5-text_indentation.py
+================================
+
+defines a text indentation
+
+Usage
+=====
+
+text printed with two new lines after this char . : or ?
+
+::
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+	>>> text_indentation("test me.")
+	test me.
+	<BLANKLINE>
+
+No space printed at beginning and at the end
+
+::
+
+	>>> text_indentation("   Hi!.  ")
+	Hi!.
+	<BLANKLINE>
+
+::
+
+	>>> text_indentation("       ")
+
+::
+
+	>>> text_indentation("	test more.	And more.	")
+	test more.
+	<BLANKLINE>
+	And more.
+	<BLANKLINE>
+
+text not ended with . : ? is not ended with new line
+
+::
+
+	>>> text_indentation("this must end normal")
+	this must end normal
+
+::
+
+	>>> text_indentation("some changes:\nNewline.")
+	some changes:
+	<BLANKLINE>
+	<BLANKLINE>
+	Newline.
+	<BLANKLINE>
+
+::
+
+	>>> text_indentation("Hello \n Hi.")
+	Hello 
+	Hi.
+	<BLANKLINE>
+
+Invalid text
+
+::
+
+	>>> text_indentation(2)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+::
+
+	>>> text_indentation({"1": 1, "2": 2})
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+::
+
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	TypeError: text must be a string
