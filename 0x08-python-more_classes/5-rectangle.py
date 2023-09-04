@@ -64,3 +64,13 @@ class Rectangle:
             if col < self.height - 1:
                 rectangle = rectangle + "\n"
         return (rectangle)
+
+    def __repr__(self):
+        """return the string of a rectangle"""
+        rectangle = "Rectangle(" + str(self.__width)
+        rectangle = rectangle + ", " + str(self.__height) + ")"
+        return (rectangle)
+
+    def __del__(self):
+        """print message in deletion"""
+        print("Bye rectangle...")
