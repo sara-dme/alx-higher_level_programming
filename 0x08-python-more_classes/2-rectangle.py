@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """class tha defines a regtangle"""
 
+
 class Rectangle:
     """represent a rectangle"""
 
@@ -51,4 +52,3 @@ class Rectangle:
         if self._width == 0 or self.__heigth == 0:
             return (0)
         return ((self._width * 2) + (self._height * 2))
-
