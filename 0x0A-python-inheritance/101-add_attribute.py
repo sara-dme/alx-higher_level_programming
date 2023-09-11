@@ -5,5 +5,5 @@
 def add_attribute(mc, var, name):
     """t adds a new attribute to an object if it’s possible:"""
     if not hasattr(mc, var, name):
-        raise TypeError ("can't add new attribute")
+        raise TypeError("can't add new attribute")
     setattr(mc, var, name)
