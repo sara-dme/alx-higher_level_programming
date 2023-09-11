@@ -3,6 +3,7 @@
 """Define the inherits classes"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+
 class Rectangle(BaseGeometry):
     """ class inherits from subclass"""
 
@@ -11,4 +12,3 @@ class Rectangle(BaseGeometry):
         self.height = height
         super().integer_validator("width", width)
         super().integer_validator("height", height)
-
