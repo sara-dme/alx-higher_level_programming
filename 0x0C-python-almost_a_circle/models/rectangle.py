@@ -105,3 +105,12 @@ class Rectangle(Base):
                     setattr(self, var, kwargs[var])
                 except KeyError:
                     pass
+
+    def to_dictionary(self):
+        """ returns the dictionary 
+        representation of a Rectangle"""
+        order = ['x', 'y', 'id', 'height', 'width']
+        attrs = {}
+        for val in order:
+            attrs[val] = getattr(self, val)
+        return attrs
