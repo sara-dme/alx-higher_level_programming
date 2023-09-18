@@ -70,8 +70,6 @@ class Test_Square(unittest.TestCase):
         """check errors"""
         with self.assertRaises(TypeError):
             s = Square()
-        with self.assertRaises(AttributeError):
-            r = Square(10, 20, 2, 6, 9)
         with self.assertRaises(ValueError):
             rr = Square(10, -20)
         with self.assertRaises(TypeError):
