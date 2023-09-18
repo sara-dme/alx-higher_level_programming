@@ -5,7 +5,6 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
-import os
 
 
 class Test_Base(unittest.TestCase):
@@ -33,6 +32,7 @@ class Test_Base(unittest.TestCase):
         with self.assertRaises(NameError):
             b1 = Bases()
         with self.assertRaises(AttributeError):
+            b1 = Base()
             b1.to_dictionary()
         with self.assertRaises(AttributeError):
             b =  Base()

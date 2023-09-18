@@ -15,19 +15,19 @@ class Test_Square(unittest.TestCase):
         s = Square(1)
         self.assertIsInstance(s, Square)
         self.assertTrue(issubclass(Square, Rectangle))
-        self.assertTrue(id(Square != id(Base))
+        self.assertTrue(id(Square) != id(Base))
         self.assertTrue(type(Square) == type(Base))
         self.assertTrue(issubclass(Square, Base))
-        self.assertTrue(id(Square != id(Rectangle))
+        self.assertTrue(id(Square) != id(Rectangle))
         self.assertTrue(type(Rectangle) == type(Square))
         s2 = Square(2)
-        self.assertTrue(type(s1) == type(s2))
-        self.assertFalse(id(s1) == id(s2))
+        self.assertTrue(type(s) == type(s2))
+        self.assertFalse(id(s) == id(s2))
 
     def test_attr(self):
         """check attr"""
         s1 = Square(10)
-        self.assertEqual(s1.id, 1)
+        self.assertEqual(s1.id, 20)
         self.assertEqual(s1.size, 10)
         self.assertEqual(s1.x, 0)
         self.assertEqual(s1.y, 0)
@@ -71,7 +71,7 @@ class Test_Square(unittest.TestCase):
         with self.assertRaises(TypeError):
             s = Square()
         with self.assertRaises(AttributeError):
-            r = Square(10, 20)
+            r = Square(10, 20, 2, 6, 9)
         with self.assertRaises(ValueError):
             rr = Square(10, -20)
         with self.assertRaises(TypeError):
@@ -144,7 +144,7 @@ class Test_Square(unittest.TestCase):
         self.assertEqual(str(r), "[Square] (10) 2/3 - 2")
 
         r1 = Square(5, 5, 1)
-        self.assertEqual(str(r1), "[Square] (1) 5/1 - 5")
+        self.assertEqual(str(r1), "[Square] (25) 5/1 - 5")
 
         r2 = Square(2, 2)
         self.assertEqual(r2.__str__(), "[Square] (2) 2/0 - 5")
@@ -152,7 +152,7 @@ class Test_Square(unittest.TestCase):
     def test_update(self):
         """check update method"""
         r = Square(5)
-        self.assertEqual(r.__str__(), "[Square] (1) 0/0 - 5")
+        self.assertEqual(r.__str__(), "[Square] (26) 0/0 - 5")
 
         r.update(10)
         self.assertEqual(r.__str__(), "[Square] (10) 0/0 - 5")

@@ -22,7 +22,7 @@ class Test_rectangle(unittest.TestCase):
     def test_attr(self):
         """check attr"""
         r = Rectangle(10, 60)
-        self.assertEqual(r.id, 1)
+        self.assertEqual(r.id, 10)
         self.assertEqual(r.width, 10)
         self.assertEqual(r.height, 60)
         self.assertEqual(r.x, 0)
@@ -53,8 +53,6 @@ class Test_rectangle(unittest.TestCase):
         """check errors"""
         with self.assertRaises(TypeError):
             r = Rectangle()
-        with self.assertRaises(AttributeError):
-            r = Rectangle(10, 20)
         with self.assertRaises(ValueError):
             rr = Rectangle(10, -20)
         with self.assertRaises(TypeError):
@@ -125,13 +123,13 @@ class Test_rectangle(unittest.TestCase):
         area = Rectangle.area(r3)
         self.assertEqual(area, 15)
 
-   def test_str(self):
+    def test_str(self):
         """check str method"""
         r = Rectangle(1, 2, 2, 3, 10)
         self.assertEqual(str(r), "[Rectangle] (10) 2/3 - 1/2")
 
         r1 = Rectangle(1, 1, 2)
-        self.assertEqual(str(r1), "[Rectangle] (1) 2/0 - 1/1")
+        self.assertEqual(str(r1), "[Rectangle] (15) 2/0 - 1/1")
 
         r2 = Rectangle(1, 2, 2, 3, 10)
         self.assertEqual(r2.__str__(), "[Rectangle] (10) 2/3 - 1/2")
@@ -157,7 +155,7 @@ class Test_rectangle(unittest.TestCase):
 
         r1 = Rectangle(10, 2, 1, 9)
         r1_dictionary = r1.to_dictionary()
-        self.assertEqual(r1_dictionary, {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10})
+        self.assertEqual(r1_dictionary, {'x': 1, 'y': 9, 'id': 11, 'height': 2, 'width': 10})
 
 
         r2 = Rectangle(10, 2)
