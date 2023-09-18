@@ -2,7 +2,6 @@
 """Base Module"""
 import json
 import csv
-import turtle
 
 
 class Base:
@@ -48,8 +47,30 @@ class Base:
             json_string = "[]"
         return json.loads(json_string)
 
+    @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
 
+    @classmethod
+    def load_from_file(cls):
+        """method that returns a list of instances"""
+        filename = "{}.json".format(cls.__name__)
+        list_instance = []
+        try:
+            with open(filename, 'r') as f:
+                json_string = f.read()
+                list_dict = cls.from_json_string(json_string)
+                for val in list_dict:
+                    inst = cls.create(**val)
+                    list_instance.append(inst)
+        except FileNotFoundError:
+            return list_instance
+        return list_instance
 
 
