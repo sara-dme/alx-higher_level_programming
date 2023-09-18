@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""unittest for square.py"""
-
+"""Unittest for square.py file
+"""
 import unittest
 from models.base import Base
 from models.square import Square
@@ -25,7 +25,7 @@ class Test_Square(unittest.TestCase):
         self.assertFalse(id(s) == id(s2))
 
     def test_attr(self):
-        """check attr"""
+        """check attribute"""
         s1 = Square(10)
         self.assertEqual(s1.id, 20)
         self.assertEqual(s1.size, 10)
