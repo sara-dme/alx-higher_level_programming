@@ -26,6 +26,25 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(b.id, 1)
         b1 = Base()
         self.assertEqual(b1.id, 2)
+        b2 = Base()
+        self.assertEqual(b2.id, 3)
+        b3 = Base()
+        self.assertEqual(b3.id, 4)
+
+    def test_id_value(self):
+        """checks when id has an integer value"""
+        b1 = Base(12)
+        self.assertEqual(b1.id, 12)
+        b1.id = 4
+        self.assertEqual(b1.id, 4)
+        b2 = Base(50)
+        self.assertEqual(b1.id, 50)
+        b1 = Base(-4)
+        self.assertEqual(b1.id, -4)
+        b2 = Base(0)
+        self.assertEqual(b2.id, 0)
+        b1.__init__(30)
+        self.assertEqual(b1.id, 30)
 
     def test_raise_errors(self):
         """check for errors"""
@@ -37,3 +56,11 @@ class Test_Base(unittest.TestCase):
         with self.assertRaises(AttributeError):
             b =  Base()
             print(b.y)
+
+    def test_json_string(self):
+        """check for json string method"""
+        r1 = Rectangle(10, 7, 2, 8)
+        dictionary = (r1.to_dictionary())
+        json_dictionary = Base.to_json_string(sorted(dictionary.items()))
+        self.assertEqual(json_dictionary, '[["height", 7], ["id", 1], ["width", 10], ["x", 2], ["y", 8]]')
+        self.assertTrue(type(dictionary) != type(json_dictionary))
