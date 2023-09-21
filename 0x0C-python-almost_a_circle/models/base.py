@@ -72,5 +72,3 @@ class Base:
         except FileNotFoundError:
             return list_instance
         return list_instance
-
-

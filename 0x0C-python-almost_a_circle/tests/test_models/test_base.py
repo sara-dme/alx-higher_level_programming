@@ -38,7 +38,7 @@ class Test_Base(unittest.TestCase):
         b1.id = 4
         self.assertEqual(b1.id, 4)
         b2 = Base(50)
-        self.assertEqual(b1.id, 50)
+        self.assertEqual(b2.id, 50)
         b1 = Base(-4)
         self.assertEqual(b1.id, -4)
         b2 = Base(0)
