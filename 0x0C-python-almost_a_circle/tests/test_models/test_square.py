@@ -27,38 +27,38 @@ class Test_Square(unittest.TestCase):
     def test_attr(self):
         """check attribute"""
         s1 = Square(10)
-        self.assertEqual(s1.id, 20)
+        self.assertEqual(s1.id, 4)
         self.assertEqual(s1.size, 10)
         self.assertEqual(s1.x, 0)
         self.assertEqual(s1.y, 0)
 
         s2 = Square(20)
-        self.assertEqual(s2.id, 2)
+        self.assertEqual(s2.id, 5)
         self.assertEqual(s2.size, 20)
         self.assertEqual(s2.x, 0)
         self.assertEqual(s2.y, 0) 
         
         s3 = Square(10, 20)
-        self.assertEqual(s3.id, 3)
+        self.assertEqual(s3.id, 6)
         self.assertEqual(s3.size, 10)
         self.assertEqual(s3.x, 20)
         self.assertEqual(s3.y, 0)    
         
-        s4 = Square(10, 2, 4, 5)
-        self.assertEqual(s4.id, 5)
+        s4 = Square(10, 2, 4, 50)
+        self.assertEqual(s4.id, 50)
         self.assertEqual(s4.size, 10)
         self.assertEqual(s4.x, 2)
         self.assertEqual(s4.y, 4)
         
         s5 = Square(10, 2, 6)
-        self.assertEqual(s5.id, 4)
+        self.assertEqual(s5.id, 7)
         self.assertEqual(s5.size, 10)
         self.assertEqual(s5.x, 2)
         self.assertEqual(s5.y, 6) 
  
-        s6 = Square(10, 2, 4, 50)
-        s6.id = 50
-        self.assertEqual(s6.id, 50)
+        s6 = Square(10, 2, 4, 55)
+        s6.id = 55
+        self.assertEqual(s6.id, 55)
         s6.size = 100
         self.assertEqual(s6.size, 100)
         s6.x = 20
@@ -70,6 +70,9 @@ class Test_Square(unittest.TestCase):
         """check errors"""
         with self.assertRaises(TypeError):
             s = Square()
+        with self.assertRaises(AttributeError):
+            r1 = Square(10, 80)
+            r1.to_json()
         with self.assertRaises(ValueError):
             rr = Square(10, -20)
         with self.assertRaises(TypeError):
@@ -78,16 +81,14 @@ class Test_Square(unittest.TestCase):
             r2 = Square(10, 4, "5")
         with self.assertRaises(TypeError):
             r3 = Square(10, 4, 20, 12, 25, 10)
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ValueError):
             r4 = Square(-10, 4)
         with self.assertRaises(ValueError):
             r5 = Square(0, 10)
         with self.assertRaises(ValueError):
-            r6 = Square(10, 0)
+            r6 = Square(10, -1)
         with self.assertRaises(ValueError):
             r7 = Square(20, 10, -9, 5)
-        with self.assertRaises(ValueError):
-            r8 = Square(20, 10, 6, -9)
 
         with self.assertRaises(ValueError):
             r1.x = -9
@@ -142,15 +143,15 @@ class Test_Square(unittest.TestCase):
         self.assertEqual(str(r), "[Square] (10) 2/3 - 2")
 
         r1 = Square(5, 5, 1)
-        self.assertEqual(str(r1), "[Square] (25) 5/1 - 5")
+        self.assertEqual(str(r1), "[Square] (14) 5/1 - 5")
 
         r2 = Square(2, 2)
-        self.assertEqual(r2.__str__(), "[Square] (2) 2/0 - 5")
+        self.assertEqual(r2.__str__(), "[Square] (15) 2/0 - 2")
 
     def test_update(self):
         """check update method"""
         r = Square(5)
-        self.assertEqual(r.__str__(), "[Square] (26) 0/0 - 5")
+        self.assertEqual(r.__str__(), "[Square] (16) 0/0 - 5")
 
         r.update(10)
         self.assertEqual(r.__str__(), "[Square] (10) 0/0 - 5")
@@ -168,21 +169,16 @@ class Test_Square(unittest.TestCase):
 
         r1 = Square(10, 2, 1)
         r1_dictionary = r1.to_dictionary()
-        self.assertEqual(r1_dictionary, {'x': 2, 'y': 1, 'id': 1, 'size': 10})
-
+        self.assertEqual(r1_dictionary, {'x': 2, 'y': 1, 'id': 8, 'size': 10})
 
         r2 = Square(1, 1)
         r2_dictionary = r2.to_dictionary()
-        self.assertEqual(r2_dictionary, {'x': 1, 'y': 0, 'id': 2, 'size': 1})
-
+        self.assertEqual(r2_dictionary, {'x': 1, 'y': 0, 'id': 9, 'size': 1})
 
         r3 = Square(10, 0, 2)
         r3_dictionary = r3.to_dictionary()
-        self.assertEqual(r3_dictionary, {'x': 0, 'y': 2, 'id': 3, 'size': 10})
+        self.assertEqual(r3_dictionary, {'x': 0, 'y': 2, 'id': 10, 'size': 10})
 
         r4 = Square(10, 2, 5, 6)
         r4_dictionary = r4.to_dictionary()
         self.assertEqual(r4_dictionary, {'x': 2, 'y': 5, 'id': 6, 'size': 10})
-
-
-

@@ -2,6 +2,7 @@
 """Module square"""
 from models.rectangle import Rectangle
 
+
 class Square(Rectangle):
     """ class Square that inherits from Rectangle"""
     def __init__(self, size, x=0, y=0, id=None):
@@ -16,13 +17,13 @@ class Square(Rectangle):
     @property
     def size(self):
         return self.width
-    
+
     @size.setter
     def size(self, val):
         if not isinstance(val, int):
             raise TypeError("width must be an integer")
         elif (val < 0):
-            raise ValueError("width must be > 0") 
+            raise ValueError("width must be > 0")
         self.width = val
 
     def update(self, *args, **kwargs):
@@ -50,4 +51,3 @@ class Square(Rectangle):
         for val in order:
             attrs[val] = getattr(self, val)
         return attrs
-

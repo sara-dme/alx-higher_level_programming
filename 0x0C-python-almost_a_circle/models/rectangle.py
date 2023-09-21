@@ -5,7 +5,6 @@ from models.base import Base
 
 class Rectangle(Base):
     """ class Rectangle that inherits from Base"""
-    
     def __init__(self, width, height, x=0, y=0, id=None):
         """initialize value for rectangle object"""
         if not isinstance(width, int):
@@ -94,9 +93,9 @@ class Rectangle(Base):
         """prints in stdout Rectangle with character #"""
         for i in range(self.y):
             print()
-        for i in range (0, self.height):
+        for i in range(0, self.height):
             print(" " * self.x, end="")
-            for j in range (0, self.width):
+            for j in range(0, self.width):
                 print("#", end="")
             print("")
 
@@ -112,19 +111,19 @@ class Rectangle(Base):
             i = 0
             for var in order:
                 try:
-                    setattr (self, var, args[i])
+                    setattr(self, var, args[i])
                 except IndexError:
                     pass
                 i += 1
         else:
             for var in order:
                 try:
-                    setattr (self, var, kwargs[var])
+                    setattr(self, var, kwargs[var])
                 except KeyError:
                     pass
 
     def to_dictionary(self):
-        """ returns the dictionary 
+        """ returns the dictionary
         representation of a Rectangle"""
         order = ['x', 'y', 'id', 'height', 'width']
         attrs = {}

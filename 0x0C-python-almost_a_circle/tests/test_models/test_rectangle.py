@@ -53,15 +53,18 @@ class Test_rectangle(unittest.TestCase):
         """check errors"""
         with self.assertRaises(TypeError):
             r = Rectangle()
+        with self.assertRaises(AttributeError):
+            r1 = Rectangle(10, 80, 2, 3, 100)
+            r1.to_json()
         with self.assertRaises(ValueError):
             rr = Rectangle(-10, -20)
         with self.assertRaises(TypeError):
-            r1 = Rectangle(10, "4")
+            r11 = Rectangle(10, "4")
         with self.assertRaises(TypeError):
             r2 = Rectangle(10, 4, "5")
         with self.assertRaises(TypeError):
             r3 = Rectangle(10, 4, 20, 12, 25, 10)
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ValueError):
             r4 = Rectangle(-10, 4)
         with self.assertRaises(ValueError):
             r5 = Rectangle(0, 10)
@@ -71,7 +74,6 @@ class Test_rectangle(unittest.TestCase):
             r7 = Rectangle(20, 10, -9, 5)
         with self.assertRaises(ValueError):
             r8 = Rectangle(20, 10, 6, -9)
-
         with self.assertRaises(ValueError):
             r1.x = -9
         with self.assertRaises(ValueError):
@@ -160,12 +162,12 @@ class Test_rectangle(unittest.TestCase):
 
         r2 = Rectangle(10, 2)
         r2_dictionary = r2.to_dictionary()
-        self.assertEqual(r2_dictionary, {'x': 0, 'y': 0, 'id': 14, 'height': 2, 'width': 10})
+        self.assertEqual(r2_dictionary, {'x': 0, 'y': 0, 'id': 7, 'height': 2, 'width': 10})
 
 
         r3 = Rectangle(10, 2)
         r3_dictionary = r3.to_dictionary()
-        self.assertEqual(r3_dictionary, {'x': 0, 'y': 0, 'id': 15, 'height': 2, 'width': 10})
+        self.assertEqual(r3_dictionary, {'x': 0, 'y': 0, 'id': 8, 'height': 2, 'width': 10})
 
         r4 = Rectangle(10, 2, 1, 9, 10)
         r4_dictionary = r4.to_dictionary()
