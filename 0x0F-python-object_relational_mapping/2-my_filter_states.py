@@ -13,9 +13,12 @@ if __name__ == '__main--':
                          db=sys.argv[3], port=3306)
 
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'\
                 ORDER BY states.id ASC".format(argv[4]))
     states = cur.fetchall()
 
     for row in state:
         print(row)
+
+    cur.close()
+    db.close()
