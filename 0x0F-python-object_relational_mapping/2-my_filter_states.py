@@ -6,7 +6,7 @@ name matches the argument."""
 import MySQLdb
 import sys
 
-if __name__ == '__main--':
+if __name__ == '__main__':
     """ get the states from the database"""
     db = MySQLbd.connect(host="localhost", user=sys.argv[1],
                          passwd=sys.argv[2],
