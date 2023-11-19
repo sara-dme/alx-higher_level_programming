@@ -7,8 +7,9 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+
 class State(Base):
-    """State class 
+    """State class
     Attributes:
         id  (int): the state id
         name (str): state name
