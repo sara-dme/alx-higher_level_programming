@@ -20,4 +20,3 @@ if __name__ == "__main__":
 
     if row is not None:
         print(", ".join([stat[0] for stat in row]))
-
