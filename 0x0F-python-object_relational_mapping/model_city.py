@@ -13,6 +13,7 @@ class City(Base):
         id  (int): the id
         name (str): name
         __tablename__ (str): table name of the class
+        state_id (int): the state
     """
     __tablename__ = 'cities'
 
