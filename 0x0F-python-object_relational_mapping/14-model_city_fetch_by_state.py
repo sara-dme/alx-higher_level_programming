@@ -3,7 +3,8 @@
 
 
 from model_state import Base, State
-from sys import argv
+from model_city import City
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -17,7 +18,7 @@ if __name__ == '__main__':
 
     session = Session()
 
-    res = session.query(city, State).join(State)
+    res = session.query(City, State).join(State)
 
     for city, state in res.all():
         print("{}: ({}) {}".format(state.name, city.id, city.name))

@@ -3,7 +3,7 @@
 from the database hbtn_0e_6_usa"""
 
 from model_state import Base, State
-from sys import argv
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 

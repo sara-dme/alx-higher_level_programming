@@ -6,18 +6,18 @@ import sys
 import MySQLdb
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     """ Get the cities from the database"""
     db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2],
                          db=sys.argv[3], port=3306)
-    cur = db.cusrsor()
+    cur = db.cursor()
     cur.execute("SELECT cities.name\
-                 FROM cities INNER JOIN states\
+                 FROM cities JOIN states\
                  ON cities.state_id = states.id\
-                 WHERE states.name = %s\
-                 ORDER BY cities.id ASC", (sys.argv[4]))
+                 WHERE states.name LIKE BINARY %(name)s\
+                 ORDER BY cities.id ASC", {'name': sys.argv[4]})
     row = cur.fetchall()
 
     if row is not None:
-        print(", ".join([stat[1] for stat in row]))
+        print(", ".join([stat[0] for stat in row]))
 

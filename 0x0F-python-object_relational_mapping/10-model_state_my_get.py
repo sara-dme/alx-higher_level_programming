@@ -5,7 +5,7 @@ the database hbtn_0e_6_usa"""
 
 
 from model_state import Base, State
-from sys import argv
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     session = Session()
 
-    st = session.query(State).filter(State.name == argv[4]).first()
+    st = session.query(State).filter(State.name == sys.argv[4]).first()
     if st is not None:
         print('{}'.format(st.id))
     else:

@@ -7,7 +7,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     """ Get the states from the database"""
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
@@ -15,9 +15,5 @@ if __name__ = "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    st = session.query(state).order_by(State.id).all()
-
-    for s in st:
-        print("{}: {}".format(state.id, state.name))
-
-    session.close()
+    for s in session.query(State).order_by(State.id):
+        print("{0}: {1}".format(s.id, s.name))
