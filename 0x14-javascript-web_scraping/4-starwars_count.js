@@ -10,8 +10,8 @@ request.get(url, (error, response, body) => {
     data.results.forEach((film) => {
       film.characters.forEach((character) => {
         if (character.includes('18')) {
-	  count += 1;
-	}
+          count += 1;
+        }
       });
     });
     console.log(count);
