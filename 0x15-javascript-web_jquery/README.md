@@ -2,7 +2,7 @@
 
 General
 
-    Why JQuery make front-end programming so easy (don’t forget to tweet today, with the hashtag #ilovejquery :))
+    Why JQuery make front-end programming so easy 
     How to select HTML elements in JavaScript
     How to select HTML elements with JQuery
     What are differences between ID, class and tag name selectors
